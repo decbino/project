@@ -14,7 +14,8 @@ for(let i = 0; i < list.length;i++){
     <td>${member.address}</td>
     <td>${member.bod}</td>
     <td>${member.money}</td>
-    <td><button onclick = "EditMember(${member.id})">Sửa</button></td>
+    <td><img src ="${member.img}" alt ="${member.name}"/></td>
+    <td><button>Sửa</button></td>
     <td><button onclick = "DelMem(${member.id})">Xóa</button></td>
     </tr>
     
@@ -29,8 +30,9 @@ document.getElementById("member_list").innerHTML =html;
     let name = document.getElementById("name").value;
     let address = document.getElementById("address").value;
     let bod = document.getElementById("bod").value;
+    let img = document.getElementById("img").value;
     let money = document.getElementById("money").value;
-    let p = new Member(id,name,address,bod,money);
+    let p = new Member(id,name,address,bod,img,money);
     myMember.addMember(p);
     document.getElementById("member_info").reset();
     getAll(myMember.getlistMember());
@@ -41,23 +43,7 @@ function DelMem(id){
 let isConFirm = confirm("bạn có chắc chắn");
 if(isConFirm){
     myMember. deleteMember(id);
+    getAll(myMember.getlistMember());
 
 }
-}
-function EditMember(id){
-    let name = document.getElementById("name").value;
-    let address = document.getElementById("address").value;
-    let bod = document.getElementById("bod").value;
-    let money = document.getElementById("money").value;
-    let p = new Member(id,name,address,bod,money);
-    myMember.update(id, p);
-   
-}
-function newUpdate(id){
-let member = myMember.getMemberById(id);
-let name = document.getElementById("name").value;
-    let address = document.getElementById("address").value;
-    let bod = document.getElementById("bod").value;
-    let money = document.getElementById("money").value;
-
 }

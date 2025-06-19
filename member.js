@@ -1,15 +1,19 @@
 class Member {
 id;
 name;
-address;
 bod;
+address;
+img;
 money;
-constructor(id,name,address,bod,money){
+
+constructor(id,name,bod,address,img,money){
     this.id = id;
     this.name = name;
-    this.address = address;
     this.bod = bod;
+    this.address = address;
+    this.img = img;
     this.money = money;
+    
 }
 
 }
