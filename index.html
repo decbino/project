@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+    <form method="post" id="member_info">
+      <h3>Thêm thành viên</h3>
+      <label>Member name:</label><br><br>
+      <input type="text" id="name" placeholder="Điền họ và tên"><br><br>
+      <label>BOD:</label><br><br>
+      <input type="date" id="bod" placeholder="Ngày Sinh"><br><br>
+      <label>Address</label><br><br>
+      <input type="text" id="address" placeholder="Điền địa chỉ"><br><br>
+      <label>Số tiền tích lũy</label><br><br>
+      <input type="number" id="money" placeholder="Hãy nhập tiền tích lũy"><br><br>
+      <button onclick="addMembership()" type="button">Xác nhận</button>
+    </form>
+    <br><br>
+
+  </center>
+  
+<h3> Quản Lý Thành Viên</h3>
+  <table border="1">
+    <th>ID</th>
+    <th>Name</th>
+    <th>BOD</th>
+    <th>Address</th>
+    <th>Số tiền tích lũy</th>
+    <th colspan="2">Action</th>
+    <tbody id = "member_list"></tbody>
+  </table>
+  
+</body>
+<script src ="member.js"></script>
+<script src ="memberStore.js"></script>
+<script src ="index.js"></script>
+</html>
