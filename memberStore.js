@@ -31,8 +31,30 @@ class MemberStore {
             alert("không có sản phẩm này");
         }else{
             this.listMember.splice(index,1);
-            getAll(myMember.getlistMember());
-        }
-        
+          
+        }    
 }
+    update(id,newMember){
+        let index = -1;
+        for(let i = 0; i < this.listMember.length;i++){
+            let p = this.listMember[i];
+            if(p.id == id){
+                index = i;
+                break
+            }
+        }
+        if(index == -1){
+            alert("không có sản phẩm này");
+        }else{
+            this.listMember[index] = newMember;
+        }
+    }
+    getMemberById(id) {
+        for (let i = 0; i < this.listMember.length; i++) {
+            let p = this.listMember[i];
+            if (id == p.id) {
+                return p;
+            }
+        }
+    }
 }
