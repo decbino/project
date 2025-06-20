@@ -47,3 +47,74 @@ if(isConFirm){
 
 }
 }
+
+function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+  
+    const found = users.find(u => u.username === user && u.password === pass);
+    if(user === "admin" && pass === "admin"){
+        window.location.href = "index.html";
+    }else if (found) {
+      localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("currentUser", user);
+      window.location.href = "index.html";
+    } else {
+      alert("Sai tài khoản hoặc mật khẩu!");
+    }
+  }
+function logout() {
+    localStorage.removeItem("loggedIn");
+    window.location.href = "login.html";
+  }
+
+  function register() {
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+
+    if (!user || !pass) {
+        alert("Vui lòng nhập đầy đủ thông tin");
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const existed = users.find(u => u.username === user);
+    if (existed) {
+        alert("Tài khoản đã tồn tại!");
+        return;
+    }
+
+    users.push({ username: user, password: pass });
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Đăng ký thành công! Mời bạn đăng nhập.");
+    window.location.href = "login.html";
+}
+
+function showRegisteredUsers() {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+  
+    let html = `
+      <h3>Danh sách tài khoản đã đăng ký:</h3>
+      <table border="1">
+        <tr>
+          <th>STT</th>
+          <th>Username</th>
+          <th>Password</th>
+        </tr>
+    `;
+  
+    for (let i = 0; i < users.length; i++) {
+      html += `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${users[i].username}</td>
+          <td>${users[i].password}</td>
+        </tr>
+      `;
+    }
+  
+    html += `</table>`;
+    document.getElementById("user_list").innerHTML = html;
+  }
